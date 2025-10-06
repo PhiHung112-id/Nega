@@ -23,31 +23,88 @@
             z-index: 0;
         }
 
-        /* 🌕 Mặt trăng */
+        /* 🌕 Mặt trăng siêu thật nâng cấp */
         .moon {
             position: fixed;
             top: 40px;
             right: 60px;
-            width: 120px;
-            height: 120px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #fff, #ddd);
-            box-shadow: 0 0 40px rgba(255,255,200,0.8);
+            background: radial-gradient(circle at 30% 30%, #fffdf5 0%, #f5f2e9 30%, #ddd9c9 55%, #bcb8a9 75%, #9a9689 100%);
+            box-shadow: 0 0 80px 35px rgba(255, 255, 200, 0.55), 0 0 150px 70px rgba(255, 255, 150, 0.25), 0 0 250px 150px rgba(255, 255, 100, 0.1);
             z-index: 2;
-            animation: glow 6s ease-in-out infinite alternate;
+            overflow: hidden;
+            animation: glow 10s ease-in-out infinite alternate;
         }
 
+            /* 🌑 Vân mặt trăng – thêm lớp chi tiết và chiều sâu */
+            .moon::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: radial-gradient(circle at 15% 20%, rgba(150,150,150,0.35) 0%, transparent 45%), radial-gradient(circle at 35% 65%, rgba(120,120,120,0.3) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(80,80,80,0.25) 0%, transparent 50%), radial-gradient(circle at 80% 40%, rgba(180,180,180,0.35) 0%, transparent 55%), radial-gradient(circle at 45% 45%, rgba(100,100,100,0.25) 0%, transparent 65%);
+                mix-blend-mode: multiply;
+                opacity: 0.9;
+                filter: contrast(1.2) brightness(0.95) blur(0.8px);
+                animation: moonTexture 50s ease-in-out infinite alternate;
+            }
+
+            /* 🌫️ Lớp ánh sáng loang mềm (giả ánh mây bay qua) */
+            .moon::after {
+                content: "";
+                position: absolute;
+                inset: -60%;
+                background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+                filter: blur(45px);
+                opacity: 0.45;
+                mix-blend-mode: screen;
+                animation: moonGlowMove 25s linear infinite;
+            }
+
+        /* ✨ Nhịp thở của ánh sáng */
         @keyframes glow {
-            from {
+            0% {
                 transform: scale(1);
                 filter: brightness(1);
             }
 
-            to {
+            100% {
                 transform: scale(1.05);
-                filter: brightness(1.3);
+                filter: brightness(1.25);
             }
         }
+
+        /* 🌕 Dịch chuyển vân nhẹ nhàng */
+        @keyframes moonTexture {
+            0% {
+                transform: translate(0%, 0%) scale(1);
+            }
+
+            100% {
+                transform: translate(-3%, 2%) scale(1.03);
+            }
+        }
+
+        /* 🌫️ Ánh sáng mờ trôi */
+        @keyframes moonGlowMove {
+            0% {
+                transform: translate(-10%, -5%) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translate(10%, 5%) rotate(180deg);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(-10%, -5%) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+
+
 
         /* 🏮 Đèn lồng */
         .lantern {
@@ -56,13 +113,13 @@
             pointer-events: auto;
             filter: drop-shadow(0 0 15px rgba(255,140,0,0.8));
             transition: transform 0.3s ease, filter 0.3s ease; /* mượt */
-            z-index: 1;
+            z-index: 900;
         }
 
             .lantern:hover {
                 transform: scale(1.5); /* hình lồng đèn to ra */
                 filter: drop-shadow(0 0 35px rgba(255,200,100,0.9)); /* ánh sáng mạnh hơn */
-                z-index: 10; /* nổi lên trên */
+                z-index: 900; /* nổi lên trên */
             }
 
 
