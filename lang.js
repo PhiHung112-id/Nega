@@ -151,7 +151,7 @@ function checkPassword() {
     const password = display.value.trim();
 
     if (password === '17102005') {
-        // Mở thiệp sinh nhật
+        // 🎂 Mở thiệp sinh nhật
         calculatorScreen.style.display = 'none';
         birthdayScreen.style.display = 'block';
 
@@ -162,13 +162,25 @@ function checkPassword() {
         document.getElementById('letterOpened').style.display = 'none';
         document.querySelector('.back-btn').style.display = 'none';
 
+        // --- Bật nhạc sinh nhật ---
+        const music = document.getElementById('bgMusic');
+        if (music) {
+            const playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Nếu trình duyệt chặn autoplay, phát khi click
+                    document.body.addEventListener('click', () => music.play(), { once: true });
+                });
+            }
+        }
+        // ---------------------------
         setTimeout(() => {
             createEnhancedFireworks();
             playSuccessAnimation();
         }, 500);
 
     } else if (password === '061025') {
-        // Mở trang trung thu
+        // 🌕 Mở trang trung thu
         calculatorScreen.style.display = 'none';
         birthdayScreen.style.display = 'none';
         document.body.style.transition = 'opacity 0.8s ease';
@@ -178,8 +190,30 @@ function checkPassword() {
             window.location.href = 'trungthu.html';
         }, 800);
 
+    } else if (password === '999') {
+        // 🌸 Mở trang "vẽ hoa"
+        calculatorScreen.style.display = 'none';
+        birthdayScreen.style.display = 'none';
+        document.body.style.transition = 'opacity 0.8s ease';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+            window.location.href = 'vehoa.html';
+        }, 800);
+
+    } else if (password === '143') {
+        // 💖 Mở trang "like me"
+        calculatorScreen.style.display = 'none';
+        birthdayScreen.style.display = 'none';
+        document.body.style.transition = 'opacity 0.8s ease';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+            window.location.href = 'likeme.html';
+        }, 800);
+
     } else {
-        // Sai mật khẩu
+        // ❌ Sai mật khẩu
         display.style.animation = 'shake 0.6s ease-in-out';
         display.style.borderColor = '#ff4444';
 
