@@ -147,50 +147,7 @@ function typeBirthdayLines(lines, element, done) {
     }
     nextLine();
 }
-function checkPassword() {
-    const password = display.value.trim();
 
-    if (password === '17102005') {
-        // Mở thiệp sinh nhật
-        calculatorScreen.style.display = 'none';
-        birthdayScreen.style.display = 'block';
-
-        // Ẩn các phần không cần thiết, chỉ hiện thư đóng
-        document.querySelector('.birthday-title').style.display = 'none';
-        document.querySelector('.date-special').style.display = 'none';
-        document.getElementById('letterClosed').style.display = 'flex';
-        document.getElementById('letterOpened').style.display = 'none';
-        document.querySelector('.back-btn').style.display = 'none';
-
-        setTimeout(() => {
-            createEnhancedFireworks();
-            playSuccessAnimation();
-        }, 500);
-
-    } else if (password === '061025') {
-        // Mở trang trung thu
-        calculatorScreen.style.display = 'none';
-        birthdayScreen.style.display = 'none';
-        document.body.style.transition = 'opacity 0.8s ease';
-        document.body.style.opacity = '0';
-
-        setTimeout(() => {
-            window.location.href = 'trungthu.html';
-        }, 800);
-
-    } else {
-        // Sai mật khẩu
-        display.style.animation = 'shake 0.6s ease-in-out';
-        display.style.borderColor = '#ff4444';
-
-        setTimeout(() => {
-            alert('🌸 Mật khẩu không đúng! Hãy thử lại nhé! 🌸');
-            clearDisplay();
-            display.style.animation = '';
-            display.style.borderColor = '';
-        }, 600);
-    }
-}
 
 
 // Khởi tạo trang lời chúc với hiệu ứng
@@ -438,7 +395,7 @@ function checkPassword() {
             playSuccessAnimation();
         }, 500);
 
-    } else if (password === '061025') {
+    } else if (password === '0610') {
         // 🌕 Mở trang trung thu
         calculatorScreen.style.display = 'none';
         birthdayScreen.style.display = 'none';
@@ -469,6 +426,17 @@ function checkPassword() {
 
         setTimeout(() => {
             window.location.href = 'likeme.html';
+        }, 800);
+
+    } else if (password === '2010') {
+        // Mở trang 20/10
+        calculatorScreen.style.display = 'none';
+        birthdayScreen.style.display = 'none';
+        document.body.style.transition = 'opacity 0.8s ease';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+            window.location.href = '20th10.html';
         }, 800);
 
     } else {
