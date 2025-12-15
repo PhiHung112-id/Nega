@@ -364,8 +364,15 @@ function openLetter() {
 
 // Sửa lại checkPassword để chỉ hiện bức thư, chưa hiện nội dung
 function checkPassword() {
-    const password = display.value.trim();
+    const displayElement = document.getElementById('display');
 
+    // Kiểm tra xem tìm thấy ô nhập chưa
+    if (!displayElement) {
+        alert("Lỗi: Không tìm thấy ô nhập liệu có id='display' trong HTML!");
+        return;
+    }
+
+    const password = displayElement.value.trim();
     if (password === '17102005') {
         // 🎂 Mở thiệp sinh nhật
         calculatorScreen.style.display = 'none';
@@ -439,6 +446,16 @@ function checkPassword() {
             window.location.href = '20th10.html';
         }, 800);
 
+    } else if (password === '2512') {
+        // 🎄 Mở trang Giáng Sinh
+        calculatorScreen.style.display = 'none';
+        birthdayScreen.style.display = 'none';
+        document.body.style.transition = 'opacity 0.8s ease';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+            window.location.href = 'giangsinh.html';
+        }, 800);
     } else {
         // ❌ Sai mật khẩu
         display.style.animation = 'shake 0.6s ease-in-out';
